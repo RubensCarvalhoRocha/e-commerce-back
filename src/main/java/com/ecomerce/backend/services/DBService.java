@@ -30,23 +30,32 @@ public class DBService {
 
     @Transactional
     public void instanciaDB() {
-        Pessoa p1 = new Pessoa(null, "Pedro Henrique", "040.198.751-54", "19/12/2003");
-        Endereco ed1 = new Endereco(null, "Rua timbiras q2 l8", "Nerópolis", "GO", "75460000", "SN", "");
+        Pessoa p1 = new Pessoa(null, "Ana Julia", "040.198.751-54", "01/10/2002");
+        Endereco ed1 = new Endereco(null, "Rua Madri 6", "Goiânia", "GO", "74369-046", "SN", "");
         ed1.setPessoa(p1);
         p1.setEndereco(ed1);
 
-        Usuario u1 = new Usuario(null, "admin@value.adm", "123");
+        Pessoa p2 = new Pessoa(null, "Joao teste", "47.395.704-8", "01/10/2002");
+        Endereco ed2 = new Endereco(null, "Rua São João", "Goiânia", "GO", "74354-826", "SN", "");
+        ed2.setPessoa(p2);
+        p2.setEndereco(ed2);
+
+        Usuario u1 = new Usuario(null, "jujuAdm@gmail.com", "123");
         u1.addPerfil(Perfil.ADMIN);
 
-        Usuario u2 = new Usuario(null, "pedrohsfwd@gmail.com", "123");
+        Usuario u2 = new Usuario(null, "jujuCliente@gmail.com", "123");
         u2.setPessoa(p1);
         u2.addPerfil(Perfil.CLIENTE);
 
+        Usuario u3 = new Usuario(null, "joao@gmail.com", "123");
+        u3.setPessoa(p2);
+        u3.addPerfil(Perfil.CLIENTE);
+
         Produto produto = new Produto();
         produto.getId();
-        Produto produto1 = new Produto(null, "Lã Azul","Ovelha", 29000.27, 2);
-        Produto produto2 = new Produto(null, "Lã Preta","Ovelha", 1299.99, 2);
-        Produto produto3 = new Produto(null, "Lã Vermelha","Carneiro", 290.5, 2);
+        Produto produto1 = new Produto(null, "Camiseta Lã Azul","Produto Artesanal feito de lã", 29000.27, 2);
+        Produto produto2 = new Produto(null, "Camiseta Lã Preta","Produto Artesanal feito de lã", 1299.99, 2);
+        Produto produto3 = new Produto(null, "Camiseta Lã Vermelha","Produto Artesanal feito de lã", 290.5, 2);
 
         this.productRepository.save(produto1);
         this.productRepository.save(produto2);
@@ -55,7 +64,11 @@ public class DBService {
         pessoaRepository.save(p1);
         enderecoRepository.save(ed1);
 
+        pessoaRepository.save(p2);
+        enderecoRepository.save(ed2);
+
         usuarioRepository.save(u1);
         usuarioRepository.save(u2);
+        usuarioRepository.save(u3);
     }
 }
